@@ -71,30 +71,6 @@ export default function Result() {
         </div>
       </div>
 
-      {/* Diagonal background lines connecting corners */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <line
-            x1="0"
-            y1="0"
-            x2="100%"
-            y2="100%"
-            stroke="#E5E7EB"
-            strokeWidth="1"
-            strokeDasharray="4 4"
-          />
-          <line
-            x1="100%"
-            y1="0"
-            x2="0"
-            y2="100%"
-            stroke="#E5E7EB"
-            strokeWidth="1"
-            strokeDasharray="4 4"
-          />
-        </svg>
-      </div>
-
       {/* Hidden file input for gallery */}
       <input
         ref={fileInputRef}
@@ -105,30 +81,18 @@ export default function Result() {
       />
 
       {/* Main Content: Two Options (Scan Face & Access Gallery) with Rotating Diamond Frames */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center min-h-screen px-6 gap-16 md:gap-32">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center justify-items-center min-h-screen w-full max-w-[1250px] mx-auto px-6 gap-y-40">
+        {" "}
         {/* Option 1: Allow A.I. to Scan Your Face (Camera) */}
         <div
           className="relative flex flex-col items-center justify-center cursor-pointer group"
           onClick={handleCameraClick}
         >
-          <div className="absolute w-[280px] h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
-          <div className="absolute w-[240px] h-[240px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
-          <div className="absolute w-[320px] h-[320px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
-
+          <div className="absolute w-[280px] h-[280px] border-2 border-dotted border-gray-300 rotate-45 pointer-events-none" />
+          <div className="absolute w-[280px] h-[280px] border-2 border-dotted border-gray-300 rotate-45 pointer-events-none" />
+          <div className="absolute w-[280px] h-[280px] border-2 border-dotted border-gray-300 rotate-45 pointer-events-none" />
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
-            <svg
-              className="w-12 h-12 text-black"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <circle cx="12" cy="12" r="3" />
-              <path d="M3 7V5a2 2 0 0 1 2-2h2" />
-              <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-              <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
-              <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
-            </svg>
+            <img src="./camera-icon.webp"></img>
           </div>
           <div className="mt-6 text-center z-10">
             <p className="text-xs font-semibold tracking-wider leading-relaxed">
@@ -138,7 +102,6 @@ export default function Result() {
             </p>
           </div>
         </div>
-
         {/* Option 2: Allow A.I. Access Gallery */}
         <div
           className="relative flex flex-col items-center justify-center cursor-pointer group"
@@ -149,17 +112,7 @@ export default function Result() {
           <div className="absolute w-[320px] h-[320px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
 
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
-            <svg
-              className="w-12 h-12 text-black"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <polyline points="21 15 16 10 5 21" />
-            </svg>
+            <img src="./gallery-icon.webp"></img>
           </div>
           <div className="mt-6 text-center z-10">
             <p className="text-xs font-semibold tracking-wider leading-relaxed">

@@ -36,7 +36,7 @@ export default function Testing() {
       throw new Error(`API error: ${response.status}`);
     }
 
-    window.location.href = "/result";
+    window.location.href = "/thank-you";
   } catch (error) {
     console.error("Submission failed:", error);
   }
