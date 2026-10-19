@@ -5,26 +5,42 @@ import NavBar from "./NavBar";
 
 export default function Testing() {
   const [name, setName] = useState("");
+  const [city, setCity] = useState("");
+  const [step, setStep] = useState<"name" | "city">("name");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim()) return;
+  e.preventDefault();
 
-    try {
-      await fetch(
-        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name }),
-        },
-      );
-      window.location.href = "/result";
-    } catch (err) {
-      console.error(err);
-      window.location.href = "/result";
+  if (step === "name") {
+    if (!name.trim()) return;
+    setStep("city");
+    return;
+  }
+
+  if (!city.trim()) return;
+
+  try {
+    const response = await fetch(
+      "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          location: city.trim(),
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
     }
-  };
+
+    window.location.href = "/result";
+  } catch (error) {
+    console.error("Submission failed:", error);
+  }
+};
 
   return (
     <div className="relative min-h-screen w-screen overflow-hidden bg-white text-[#1A1B1C] select-none font-sans">
@@ -70,26 +86,38 @@ export default function Testing() {
           <div className="absolute w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] border border-dotted border-[#A0A4AB] -rotate-6"></div>
         </div>
 
-        <div className="relative z-20 flex flex-col items-center justify-center text-center">
-          <p className="text-xs font-medium text-gray-400 tracking-wider uppercase mb-3">
-            CLICK TO TYPE
-          </p>
-          <form onSubmit={handleSubmit} className="relative">
-            <input
-              className="text-4xl sm:text-6xl font-normal text-center bg-transparent border-b border-[#1A1B1C] focus:outline-none appearance-none w-[320px] sm:w-[480px] pb-2 tracking-tight text-[#1A1B1C]"
-              placeholder="Introduce Yourself"
-              type="text"
-              autoComplete="off"
-              autoFocus
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <button type="submit" className="sr-only">
-              Submit
-            </button>
-          </form>
-        </div>
-      </div>
+       <div className="relative z-20 flex flex-col items-center justify-center text-center">
+  <p className="text-xs font-medium text-gray-400 tracking-wider uppercase mb-3">
+    CLICK TO TYPE
+  </p>
+
+  <form onSubmit={handleSubmit} className="relative">
+    <input
+      key={step}
+      className="text-4xl sm:text-6xl font-normal text-center bg-transparent border-b border-[#1A1B1C] focus:outline-none w-[320px] sm:w-[480px] pb-2 tracking-tight text-[#1A1B1C]"
+      placeholder={
+        step === "name" ? "Introduce Yourself" : "Where are you from?"
+      }
+      type="text"
+      autoComplete="off"
+      autoFocus
+      value={step === "name" ? name : city}
+      onChange={(e) => {
+        if (step === "name") {
+          setName(e.target.value);
+        } else {
+          setCity(e.target.value);
+        }
+      }}
+    />
+
+    <button type="submit" className="sr-only">
+      Continue
+    </button>
+  </form>
+  </div>
+  </div>
+
 
       {/* Bottom Left Back Button */}
       <div className="absolute bottom-8 left-6 md:left-12 z-20">
