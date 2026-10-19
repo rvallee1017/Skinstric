@@ -26,7 +26,7 @@ export default function Select() {
       </div>
 
       {/* Main Center Diamond Grid & Dotted Outline Frame */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-16 px-6 py-32 lg:flex-row lg:gap-32">
         {/* Large Dotted Diamond Frame matching the screenshot */}
         <div className="absolute w-[440px] h-[440px] border border-dotted border-[#A0A4AB] rotate-45 pointer-events-none"></div>
 
@@ -34,8 +34,8 @@ export default function Select() {
         <div className="relative z-20 grid grid-cols-3 grid-rows-3 gap-2">
           {/* Top: Demographics */}
           <div className="flex items-center justify-center col-start-2 row-start-1">
-            <a href="/summary">
-              <button className="w-36 h-36 bg-[#F3F4F6] hover:bg-gray-200 transform rotate-45 flex items-center justify-center text-center cursor-pointer transition-transform hover:scale-105 shadow-sm">
+            <a className="text-[#1A1B1C] no-underline" href="/summary">
+              <button className="w-36 h-36 bg-[#F3F3F4] hover:bg-[#E1E1E2] transform rotate-45 flex items-center justify-center text-center cursor-pointer transition-transform hover:scale-105 shadow-sm">
                 <span className="transform -rotate-45 text-xs font-semibold tracking-wider text-[#1A1B1C]">
                   DEMOGRAPHICS
                 </span>
@@ -45,7 +45,7 @@ export default function Select() {
 
           {/* Left: Cosmetic Concerns */}
           <div className="flex items-center justify-center col-start-1 row-start-2">
-            <button className="w-36 h-36 bg-[#F9FAFB] hover:bg-gray-200 transform rotate-45 flex items-center justify-center text-center cursor-pointer transition-transform hover:scale-105 shadow-sm">
+            <button className="w-36 h-36 bg-[#F3F3F4] hover:bg-[#E1E1E2] transform rotate-45 flex items-center justify-center text-center cursor-pointer transition-transform hover:scale-105 shadow-sm">
               <span className="transform -rotate-45 text-xs font-semibold tracking-wider text-[#1A1B1C] px-2">
                 COSMETIC CONCERNS
               </span>
@@ -54,7 +54,7 @@ export default function Select() {
 
           {/* Right: Skin Type Details (Active/Highlighted state) */}
           <div className="flex items-center justify-center col-start-3 row-start-2">
-            <button className="w-36 h-36 bg-[#D1D5DB] hover:bg-gray-300 transform rotate-45 flex items-center justify-center text-center cursor-pointer transition-transform hover:scale-105 shadow-sm">
+            <button className="w-36 h-36 bg-[#D9D9D9] hover:bg-[#CCCCCC] transform rotate-45 flex items-center justify-center text-center cursor-pointer transition-transform hover:scale-105 shadow-sm">
               <span className="transform -rotate-45 text-xs font-semibold tracking-wider text-[#1A1B1C] px-2">
                 SKIN TYPE DETAILS
               </span>
@@ -74,19 +74,19 @@ export default function Select() {
 
       {/* Bottom Navigation: Back & Get Summary */}
       <div className="absolute bottom-8 left-6 md:left-12 z-20">
-        <a href="/result" className="group flex items-center space-x-3 cursor-pointer">
+        <a href="/result" className="group flex items-center space-x-3 cursor-pointer text-[#1A1B1C] no-underline">
           <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <span className="-rotate-45 text-xs">◀</span>
+            <span className="-rotate-45 text-[10px] text-black">◄</span>
           </div>
           <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">BACK</span>
         </a>
       </div>
 
       <div className="absolute bottom-8 right-6 md:right-12 z-20">
-        <a href="/summary" className="group flex items-center space-x-3 cursor-pointer">
+        <a href="/summary" className="group flex items-center space-x-3 cursor-pointer text-[#1A1B1C] no-underline">
           <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">GET SUMMARY</span>
           <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <span className="-rotate-45 text-xs">▶</span>
+            <span className="-rotate-45 text-[10px] text-black">►</span>
           </div>
         </a>
       </div>

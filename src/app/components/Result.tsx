@@ -135,7 +135,7 @@ export default function Result() {
       <div className="absolute bottom-8 left-6 md:left-12 z-20">
         <a href="/testing" className="group flex items-center space-x-3 cursor-pointer">
           <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <span className="-rotate-45 text-xs">◀</span>
+            <span className="-rotate-45 text-black text-[10px]">◀</span>
           </div>
           <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">BACK</span>
         </a>
