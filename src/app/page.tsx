@@ -1,134 +1,74 @@
 export default function Home() {
   return (
-    <div className="antialiased text-[#1A1B1C]">
-      <div className="flex flex-row h-[64px] w-full justify-between py-3 mb-3 relative z-[1000]">
-        <div className="flex flex-row pt-1 scale-75 justify-center items-center">
+    <div className="relative min-h-screen w-screen overflow-hidden bg-white text-[#1A1B1C] select-none font-sans">
+      {/* Top Header */}
+      <div className="absolute top-0 left-0 right-0 flex flex-row h-16 w-full justify-between items-center px-6 md:px-12 z-50">
+        <div className="flex flex-row items-center space-x-2">
           <a
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-colors h-9 px-4 py-2 font-semibold text-sm mr-2 line-clamp-4 leading-[16px] text-[#1A1B1C] z-1000"
+            className="font-semibold text-sm tracking-tight text-[#1A1B1C]"
             href="/"
           >
             SKINSTRIC
           </a>
-          <img
-            alt="left-bracket"
-            loading="lazy"
-            width={5}
-            height={19}
-            decoding="async"
-            data-nimg="1"
-            className="w-[4px] h-[17px]"
-            style={{ color: "transparent" }}
-            srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202710.61a74ed4.png&amp;w=16&amp;q=75 1x"
-            src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202710.61a74ed4.png&amp;w=16&amp;q=75"
-          />
-          <p className="text-[#1a1b1c83] text-opacity-70 font-semibold text-sm ml-1.5 mr-1.5">
-            INTRO
-          </p>
-          <img
-            alt="right-bracket"
-            loading="lazy"
-            width={5}
-            height={19}
-            decoding="async"
-            data-nimg="1"
-            className="w-[4px] h-[17px]"
-            style={{ color: "transparent" }}
-            srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202711.b2b3b291.png&amp;w=16&amp;q=75 1x"
-            src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202711.b2b3b291.png&amp;w=16&amp;q=75"
-          />
+          <div className="flex items-center text-xs text-gray-400 font-semibold tracking-wide">
+            <span>[</span>
+            <span className="mx-1 text-gray-500">INTRO</span>
+            <span>]</span>
+          </div>
         </div>
-        <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-colors disabled:pointer-events-none text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 mx-4 scale-[0.8] text-[#FCFCFC] text-[10px] bg-[#1A1B1C] leading-[16px]">
+        <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-colors text-[#FCFCFC] text-[10px] bg-[#1A1B1C] px-4 py-2 uppercase tracking-wider">
           ENTER CODE
         </button>
       </div>
 
-      <div className="max-sm:scale-[0.75] max-sm:origin-center max-sm:p-6">
-        <div className="flex flex-col items-center justify-center h-[71dvh] md:fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
-          <div className="absolute inset-0 flex items-center justify-center lg:hidden">
-            <div className="w-[350px] h-[350px] border border-dotted border-[#A0A4AB] rotate-45 absolute top-1/2 left-1/2 -translate-x-[52%] -translate-y-1/2" />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center lg:hidden">
-            <div className="w-[420px] h-[420px] border border-dotted border-[#A0A4AB] rotate-45 absolute top-1/2 left-1/2 -translate-x-[52%] -translate-y-1/2" />
-          </div>
+      {/* Diagonal background lines connecting corners */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="0" x2="100%" y2="100%" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 4" />
+          <line x1="100%" y1="0" x2="0" y2="100%" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 4" />
+        </svg>
+      </div>
 
-          <div className="relative z-10 text-center">
-            <h1
-              className="text-[60px] text-[#1A1B1C] lg:text-[100px] font-inter font-normal tracking-tighter leading-none opacity-0"
-              style={{ opacity: 1 }}
-            >
-              Sophisticated
-              <br />
-              <span className="block text-[#1A1B1C]">skincare</span>
-            </h1>
-          </div>
+      {/* Main Content Container */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        {/* Left Action: Discover A.I. with diamond icon */}
+        <div className="absolute left-12 md:left-24 top-1/2 -translate-y-1/2 hidden lg:flex items-center space-x-4">
+          <a href="/testing" className="group flex items-center space-x-3 cursor-pointer">
+            <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <span className="-rotate-45 text-xs">◀</span>
+            </div>
+            <span className="text-xs font-medium tracking-wider text-[#1A1B1C]">DISCOVER A.I.</span>
+          </a>
+        </div>
 
-          <p className="z-10 block lg:hidden w-[30ch] mt-4 text-[16px] font-semibold text-center text-muted-foreground text-[#1a1b1c83]">
-            Skinstric developed an A.I. that creates a highly-personalized
-            routine tailored to what your skin needs.
+        {/* Center Heading */}
+        <div className="text-center">
+          <h1 className="text-[56px] sm:text-[72px] lg:text-[100px] font-normal tracking-[-0.03em] leading-[0.95] text-[#1A1B1C]">
+            Sophisticated
+            <br />
+            skincare
+          </h1>
+        </div>
+
+        {/* Right Action: Take Test with diamond icon */}
+        <div className="absolute right-12 md:right-24 top-1/2 -translate-y-1/2 hidden lg:flex items-center space-x-4">
+          <a href="/testing" className="group flex items-center space-x-3 cursor-pointer">
+            <span className="text-xs font-medium tracking-wider text-[#1A1B1C]">TAKE TEST</span>
+            <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <span className="-rotate-45 text-xs">▶</span>
+            </div>
+          </a>
+        </div>
+
+        {/* Bottom Left Description */}
+        <div className="absolute bottom-8 left-8 md:left-12 max-w-[320px] text-xs font-normal leading-relaxed text-[#1A1B1C] uppercase tracking-wide">
+          <p>
+            Skinstric developed an A.I. that creates a highly-personalized routine tailored to what your skin needs.
           </p>
-
-          <div className="z-10 mt-4 lg:hidden">
-            <a href="/testing">
-              <button className="relative flex items-center gap-4 hover:scale-105 duration-300">
-                <span className="text-[12px] font-bold cursor-pointer">
-                  ENTER EXPERIENCE
-                </span>
-                <div className="w-[24px] h-[24px] border border-solid border-black rotate-45 cursor-pointer" />
-                <span className="absolute left-[129px] scale-[0.5] hover:scale-60 duration-300" />
-              </button>
-            </a>
-          </div>
-
-          <div className="hidden lg:block fixed bottom-[calc(-7vh)] left-[calc(-20vw)] xl:left-[calc(-27vw)] 2xl:left-[calc(-31vw)] [@media(width&gt;=1920px)]:left-[calc(-33vw)] font-normal text-sm text-[#1A1B1C] space-y-3 uppercase">
-            <p>
-              Skinstric developed an A.I. that creates a
-              <br />
-              highly-personalized routine tailored to
-              <br />
-              what your skin needs.
-            </p>
-          </div>
-
-          <div
-            className="hidden lg:block fixed left-[calc(-53vw)] xl:left-[calc(-50vw)] top-1/2 -translate-y-1/2 w-[500px] h-[500px] transition-opacity duration-500 ease-in-out opacity-100"
-          >
-            <div className="relative w-full h-full">
-              <div className="w-full h-full border border-dotted border-[#A0A4AB] rotate-45 fixed inset-0" />
-              <button
-                id="discover-button"
-                className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/5 xl:translate-x-1/6 [@media(width&gt;=1920px)]:translate-x-1/20 px-3 py-1"
-              >
-                <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 cursor-pointer group-hover:scale-110 duration-300" />
-                <span className="absolute left-[18px] top-[8px] scale-[0.9] rotate-180 group-hover:scale-105 duration-300">
-                  ▶
-                </span>
-                <span>DISCOVER A.I.</span>
-              </button>
-            </div>
-          </div>
-
-          <div
-            className="hidden lg:block fixed top-1/2 right-[calc(-53vw)] xl:right-[calc(-50vw)] -translate-y-1/2 w-[500px] h-[500px] transition-opacity duration-500 ease-in-out opacity-100"
-          >
-            <div className="relative w-full h-full">
-              <div className="w-full h-full border border-dotted border-[#A0A4AB] rotate-45 absolute inset-0" />
-              <a href="/testing">
-                <button
-                  id="take-test-button"
-                  className="group inline-flex items-center justify-center gap-4 whitespace-nowrap rounded-md text-sm font-normal text-[#1A1B1C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer disabled:opacity-50 h-9 absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/5 xl:-translate-x-1/6 [@media(width&gt;=1920px)]:-translate-x-1/20 px-3 py-1"
-                >
-                  TAKE TEST
-                  <div className="w-[30px] h-[30px] border border-solid border-black rotate-45 group-hover:scale-110 duration-300" />
-                  <span className="absolute left-[107px] top-[9px] scale-[0.9] cursor-pointer group-hover:scale-105 duration-300">
-                    ▶
-                  </span>
-                </button>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   );
 }
+
 
