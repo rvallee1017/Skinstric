@@ -3,14 +3,17 @@
 import type { ChangeEvent } from "react";
 import { useState, useRef } from "react";
 import NavBar from "./NavBar";
+import AnalysisLoading from "./AnalysisLoading";
 
 export default function Result() {
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setIsAnalyzing(true);
 
     const reader = new FileReader();
     reader.onloadend = async () => {
@@ -39,9 +42,11 @@ export default function Result() {
 
         localStorage.setItem("demographics", JSON.stringify(result.data));
 
+        window.alert("Image analyzed successfully!");
         window.location.href = "/select";
       } catch (err) {
         console.error(err);
+        setIsAnalyzing(false);
       }
     };
 
@@ -55,6 +60,10 @@ export default function Result() {
   const handleGalleryClick = () => {
     fileInputRef.current?.click();
   };
+
+  {isAnalyzing && (
+  <AnalysisLoading previewImage={previewImage} />
+)}
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white text-[#1A1B1C] select-none font-sans">

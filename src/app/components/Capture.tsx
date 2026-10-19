@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import NavBar from "./NavBar";
+import AnalysisLoading from "./AnalysisLoading";
 
 export default function Capture() {
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [cameraState, setCameraState] = useState<
     "loading" | "active" | "denied" | "unavailable"
@@ -85,7 +87,7 @@ export default function Capture() {
     ctx.drawImage(video, 0, 0);
 
     const image = canvas.toDataURL("image/jpeg", 0.85);
-
+    setIsAnalyzing(true);
     try {
       const response = await fetch(
         "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
@@ -108,12 +110,18 @@ export default function Capture() {
 
       localStorage.setItem("demographics", JSON.stringify(result.data));
 
+      window.alert("Image analyzed successfully!");
       window.location.href = "/select";
     } catch (error) {
       console.error("Camera analysis error:", error);
       alert("Could not analyze the picture. Please try again.");
+      setIsAnalyzing(false);
     }
   };
+
+  {
+    isAnalyzing && <AnalysisLoading previewImage={previewImage} />;
+  }
 
   return (
     <main className="antialiased text-[#1A1B1C]">
