@@ -70,6 +70,51 @@ export default function Capture() {
     };
   }, []);
 
+  const takePicture = async () => {
+    const video = videoRef.current;
+
+    if (!video || !video.videoWidth) return;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    ctx.drawImage(video, 0, 0);
+
+    const image = canvas.toDataURL("image/jpeg", 0.85);
+
+    try {
+      const response = await fetch(
+        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`Analysis failed: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (!result?.data) {
+        throw new Error("No analysis data returned");
+      }
+
+      localStorage.setItem("demographics", JSON.stringify(result.data));
+
+      window.location.href = "/select";
+    } catch (error) {
+      console.error("Camera analysis error:", error);
+      alert("Could not analyze the picture. Please try again.");
+    }
+  };
+
   return (
     <main className="antialiased text-[#1A1B1C]">
       <NavBar />
@@ -161,17 +206,24 @@ export default function Capture() {
                   TAKE PICTURE
                 </div>
                 <div className="transform hover:scale-105 ease-in-out duration-300">
-                  <img
-                    alt="Take Picture"
-                    loading="lazy"
-                    width="60"
-                    height="60"
-                    decoding="async"
-                    data-nimg="1"
-                    className="w-16 h-16 cursor-pointer"
-                    src="./takePictureIcon.webp"
-                    style={{ color: "transparent" }}
-                  />
+                  <button
+                    type="button"
+                    onClick={takePicture}
+                    className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white/20 transition"
+                    aria-label="Take picture"
+                  >
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M4 7h4l2-2h4l2 2h4v12H4z" />
+                      <circle cx="12" cy="13" r="4" />
+                    </svg>
+                  </button>
                 </div>
               </div>
               <div className="absolute bottom-30 sm:bottom-40 left-0 right-0 text-center z-20">
@@ -187,31 +239,22 @@ export default function Capture() {
             </>
           )}
 
-          <div className="absolute md:bottom-8 bottom-60 left-8 z-20">
-            <a href="/result">
-              <div>
-                <div className="relative w-12 h-12 flex items-center justify-center border border-[#FCFCFC] rotate-45 scale-[1] sm:hidden">
-                  <span className="-rotate-45 text-xs font-semibold sm:hidden text-[#FCFCFC]">
-                    BACK
-                  </span>
-                </div>
-                <div className="group hidden sm:flex flex-row relative justify-center items-center">
-                  <div className=" w-12 h-12 hidden sm:flex justify-center border border-[#FCFCFC] rotate-45 scale-[0.85] group-hover:scale-[0.92] ease duration-300"></div>
-                  <svg
-                    className="-rotate-45"
-                    width="8"
-                    height="10"
-                    viewBox="0 0 8 10"
-                    aria-hidden="true"
-                  >
-                    <polygon points="8,0 0,5 8,10" fill="#FFFFFF" />
-                  </svg>
+          <div className="absolute bottom-8 left-8 z-20">
+            <a href="/result" className="flex items-center gap-4 text-white">
+              <span className="relative flex w-12 h-12 items-center justify-center">
+                <span className="absolute inset-1 border border-white rotate-45" />
+                <svg
+                  className="-rotate-0"
+                  width="8"
+                  height="10"
+                  viewBox="0 0 8 10"
+                  aria-hidden="true"
+                >
+                  <polygon points="8,0 0,5 8,10" fill="#1A1B1C" />
+                </svg>
+              </span>
 
-                  <span className="text-sm font-semibold hidden sm:block ml-6 text-[#FCFCFC]">
-                    BACK
-                  </span>
-                </div>
-              </div>
+              <span className="text-sm font-semibold">BACK</span>
             </a>
           </div>
           <canvas className="hidden"></canvas>

@@ -27,8 +27,19 @@ export default function Result() {
           },
         );
 
+        if (!response.ok) {
+          throw new Error(`Upload failed: ${response.status}`);
+        }
+
         const result = await response.json();
+
+        if (!result?.data) {
+          throw new Error("No analysis data returned");
+        }
+
         localStorage.setItem("demographics", JSON.stringify(result.data));
+
+        window.location.href = "/select";
       } catch (err) {
         console.error(err);
       }
