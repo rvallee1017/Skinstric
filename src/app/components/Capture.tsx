@@ -1,11 +1,13 @@
-'use client';
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import NavBar from "./NavBar";
 
 export default function Capture() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [cameraState, setCameraState] = useState<"loading" | "active" | "denied" | "unavailable">("loading");
+  const [cameraState, setCameraState] = useState<
+    "loading" | "active" | "denied" | "unavailable"
+  >("loading");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const startCamera = async () => {
@@ -39,14 +41,18 @@ export default function Capture() {
         err.message?.includes("Permission denied")
       ) {
         setCameraState("denied");
-        setErrorMessage("Camera access was denied. Please allow camera permissions in your browser settings to proceed.");
+        setErrorMessage(
+          "Camera access was denied. Please allow camera permissions in your browser settings to proceed.",
+        );
       } else if (
         err.name === "NotFoundError" ||
         err.name === "DevicesNotFoundError" ||
         err.name === "OverconstrainedError"
       ) {
         setCameraState("unavailable");
-        setErrorMessage("No camera device was found or the requested constraints could not be satisfied.");
+        setErrorMessage(
+          "No camera device was found or the requested constraints could not be satisfied.",
+        );
       } else {
         setCameraState("unavailable");
         setErrorMessage(err.message || "Unable to access the camera.");
@@ -66,10 +72,9 @@ export default function Capture() {
 
   return (
     <main className="antialiased text-[#1A1B1C]">
-     <NavBar />
+      <NavBar />
       <div className="h-[90vh] w-screen">
         <div className="relative h-[92vh] w-screen overflow-hidden bg-gray-900 flex items-center justify-center">
-          
           {/* Active Video Stream */}
           <video
             ref={videoRef}
@@ -85,7 +90,9 @@ export default function Capture() {
           {cameraState === "loading" && (
             <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white px-4 text-center">
               <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin mb-4"></div>
-              <p className="text-sm font-semibold tracking-wider">INITIALIZING CAMERA...</p>
+              <p className="text-sm font-semibold tracking-wider">
+                INITIALIZING CAMERA...
+              </p>
             </div>
           )}
 
@@ -95,7 +102,9 @@ export default function Capture() {
               <div className="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-red-500/20 border border-red-500 text-red-400 text-2xl">
                 ✕
               </div>
-              <h2 className="text-lg font-semibold mb-2">CAMERA ACCESS DENIED</h2>
+              <h2 className="text-lg font-semibold mb-2">
+                CAMERA ACCESS DENIED
+              </h2>
               <p className="text-xs text-gray-300 leading-relaxed mb-6">
                 {errorMessage}
               </p>
@@ -122,7 +131,9 @@ export default function Capture() {
               <div className="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-amber-500/20 border border-amber-500 text-amber-400 text-2xl">
                 ⚠
               </div>
-              <h2 className="text-lg font-semibold mb-2">CAMERA NOT AVAILABLE, PLEASE CHECK YOUR PERMISSION SETTINGS</h2>
+              <h2 className="text-lg font-semibold mb-2">
+                CAMERA NOT AVAILABLE, PLEASE CHECK YOUR PERMISSION SETTINGS
+              </h2>
               <p className="text-xs text-gray-300 leading-relaxed mb-6">
                 {errorMessage}
               </p>
@@ -158,8 +169,7 @@ export default function Capture() {
                     decoding="async"
                     data-nimg="1"
                     className="w-16 h-16 cursor-pointer"
-                    srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FtakePictureIcon.8b2eeaf2.png&amp;w=64&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FtakePictureIcon.8b2eeaf2.png&amp;w=128&amp;q=75 2x"
-                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FtakePictureIcon.8b2eeaf2.png&amp;w=128&amp;q=75"
+                    src="./takePictureIcon.webp"
                     style={{ color: "transparent" }}
                   />
                 </div>
@@ -187,9 +197,16 @@ export default function Capture() {
                 </div>
                 <div className="group hidden sm:flex flex-row relative justify-center items-center">
                   <div className=" w-12 h-12 hidden sm:flex justify-center border border-[#FCFCFC] rotate-45 scale-[0.85] group-hover:scale-[0.92] ease duration-300"></div>
-                  <span className="absolute left-3.75 bottom-3.25 scale-[0.9] rotate-180 hidden sm:block text-[#FCFCFC] group-hover:scale-[0.92] ease duration-300">
-                    ▶
-                  </span>
+                  <svg
+                    className="-rotate-45"
+                    width="8"
+                    height="10"
+                    viewBox="0 0 8 10"
+                    aria-hidden="true"
+                  >
+                    <polygon points="8,0 0,5 8,10" fill="#FFFFFF" />
+                  </svg>
+
                   <span className="text-sm font-semibold hidden sm:block ml-6 text-[#FCFCFC]">
                     BACK
                   </span>
@@ -203,4 +220,3 @@ export default function Capture() {
     </main>
   );
 }
-

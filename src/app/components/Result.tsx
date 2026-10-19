@@ -46,7 +46,7 @@ export default function Result() {
   };
 
   return (
-    <div className="relative min-h-screen w-screen overflow-hidden bg-white text-[#1A1B1C] select-none font-sans">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-white text-[#1A1B1C] select-none font-sans">
       {/* Top Header */}
       <NavBar />
 
@@ -81,16 +81,17 @@ export default function Result() {
       />
 
       {/* Main Content: Two Options (Scan Face & Access Gallery) with Rotating Diamond Frames */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center justify-items-center min-h-screen w-full max-w-[1250px] mx-auto px-6 gap-y-40">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center justify-items-center min-h-screen w-full max-w-[1250px] mx-auto px-6 gap-y-40 pt-48 pb-32 md:py-20">
         {" "}
         {/* Option 1: Allow A.I. to Scan Your Face (Camera) */}
         <div
           className="relative flex flex-col items-center justify-center cursor-pointer group"
           onClick={handleCameraClick}
         >
-          <div className="absolute w-[280px] h-[280px] border-2 border-dotted border-gray-300 rotate-45 pointer-events-none" />
-          <div className="absolute w-[280px] h-[280px] border-2 border-dotted border-gray-300 rotate-45 pointer-events-none" />
-          <div className="absolute w-[280px] h-[280px] border-2 border-dotted border-gray-300 rotate-45 pointer-events-none" />
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
+
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
             <img src="./camera-icon.webp"></img>
           </div>
@@ -107,9 +108,9 @@ export default function Result() {
           className="relative flex flex-col items-center justify-center cursor-pointer group"
           onClick={handleGalleryClick}
         >
-          <div className="absolute w-[280px] h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
-          <div className="absolute w-[240px] h-[240px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
-          <div className="absolute w-[320px] h-[320px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
 
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
             <img src="./gallery-icon.webp"></img>
