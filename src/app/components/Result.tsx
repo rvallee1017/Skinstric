@@ -62,7 +62,11 @@ export default function Result() {
         <p className="text-xs font-medium text-gray-500 mb-1">Preview</p>
         <div className="w-24 h-24 border border-gray-300 overflow-hidden bg-gray-50 flex items-center justify-center">
           {previewImage ? (
-            <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
+            <img
+              src={previewImage}
+              alt="Preview"
+              className="w-full h-full object-cover"
+            />
           ) : null}
         </div>
       </div>
@@ -70,8 +74,24 @@ export default function Result() {
       {/* Diagonal background lines connecting corners */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="0" x2="100%" y2="100%" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 4" />
-          <line x1="100%" y1="0" x2="0" y2="100%" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 4" />
+          <line
+            x1="0"
+            y1="0"
+            x2="100%"
+            y2="100%"
+            stroke="#E5E7EB"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+          />
+          <line
+            x1="100%"
+            y1="0"
+            x2="0"
+            y2="100%"
+            stroke="#E5E7EB"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+          />
         </svg>
       </div>
 
@@ -86,15 +106,23 @@ export default function Result() {
 
       {/* Main Content: Two Options (Scan Face & Access Gallery) with Rotating Diamond Frames */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center min-h-screen px-6 gap-16 md:gap-32">
-        
         {/* Option 1: Allow A.I. to Scan Your Face (Camera) */}
-        <div className="relative flex flex-col items-center justify-center cursor-pointer group" onClick={handleCameraClick}>
+        <div
+          className="relative flex flex-col items-center justify-center cursor-pointer group"
+          onClick={handleCameraClick}
+        >
           <div className="absolute w-[280px] h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
           <div className="absolute w-[240px] h-[240px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
           <div className="absolute w-[320px] h-[320px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
 
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
-            <svg className="w-12 h-12 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg
+              className="w-12 h-12 text-black"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
               <circle cx="12" cy="12" r="3" />
               <path d="M3 7V5a2 2 0 0 1 2-2h2" />
               <path d="M17 3h2a2 2 0 0 1 2 2v2" />
@@ -104,19 +132,30 @@ export default function Result() {
           </div>
           <div className="mt-6 text-center z-10">
             <p className="text-xs font-semibold tracking-wider leading-relaxed">
-              ALLOW A.I.<br />TO SCAN YOUR FACE
+              ALLOW A.I.
+              <br />
+              TO SCAN YOUR FACE
             </p>
           </div>
         </div>
 
         {/* Option 2: Allow A.I. Access Gallery */}
-        <div className="relative flex flex-col items-center justify-center cursor-pointer group" onClick={handleGalleryClick}>
+        <div
+          className="relative flex flex-col items-center justify-center cursor-pointer group"
+          onClick={handleGalleryClick}
+        >
           <div className="absolute w-[280px] h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
           <div className="absolute w-[240px] h-[240px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
           <div className="absolute w-[320px] h-[320px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
 
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
-            <svg className="w-12 h-12 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg
+              className="w-12 h-12 text-black"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
               <circle cx="8.5" cy="8.5" r="1.5" />
               <polyline points="21 15 16 10 5 21" />
@@ -124,23 +163,36 @@ export default function Result() {
           </div>
           <div className="mt-6 text-center z-10">
             <p className="text-xs font-semibold tracking-wider leading-relaxed">
-              ALLOW A.I.<br />ACCESS GALLERY
+              ALLOW A.I.
+              <br />
+              ACCESS GALLERY
             </p>
           </div>
         </div>
-
       </div>
 
       {/* Bottom Left Back Button */}
       <div className="absolute bottom-8 left-6 md:left-12 z-20">
-        <a href="/testing" className="group flex items-center space-x-3 cursor-pointer">
+        <a
+          href="/testing"
+          className="group flex items-center space-x-3 cursor-pointer"
+        >
           <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <span className="-rotate-45 text-black text-[10px]">◀</span>
+            <svg
+              className="-rotate-45"
+              width="8"
+              height="10"
+              viewBox="0 0 8 10"
+              aria-hidden="true"
+            >
+              <polygon points="8,0 0,5 8,10" fill="#1A1B1C" />
+            </svg>
           </div>
-          <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">BACK</span>
+          <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">
+            BACK
+          </span>
         </a>
       </div>
     </div>
   );
 }
-

@@ -54,7 +54,15 @@ export default function Home() {
               className="group flex items-center space-x-3 cursor-pointer"
             >
               <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <span className="-rotate-45 text-black text-[10px]">◄</span>
+                <svg
+                  className="-rotate-45"
+                  width="8"
+                  height="10"
+                  viewBox="0 0 8 10"
+                  aria-hidden="true"
+                >
+                  <polygon points="8,0 0,5 8,10" fill="#1A1B1C" />
+                </svg>
               </div>
               <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">
                 DISCOVER A.I.
@@ -81,7 +89,15 @@ export default function Home() {
                 TAKE TEST
               </span>
               <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <span className="-rotate-45 text-black text-[10px]">►</span>
+                <svg
+                  className="-rotate-45"
+                  width="8"
+                  height="10"
+                  viewBox="0 0 8 10"
+                  aria-hidden="true"
+                >
+                  <polygon points="0,0 8,5 0,10" fill="#1A1B1C" />
+                </svg>
               </div>
             </a>
           </div>
@@ -124,7 +140,15 @@ export default function Home() {
               ENTER EXPERIENCE
             </span>
             <div className="w-9 h-9 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <span className="-rotate-45 text-black text-[10px]">►</span>
+              <svg
+                className="-rotate-45"
+                width="8"
+                height="10"
+                viewBox="0 0 8 10"
+                aria-hidden="true"
+              >
+                <polygon points="0,0 8,5 0,10" fill="#1A1B1C" />
+              </svg>
             </div>
           </a>
         </div>

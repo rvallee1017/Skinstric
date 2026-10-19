@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import NavBar from "./NavBar";
@@ -11,11 +11,14 @@ export default function Testing() {
     if (!name.trim()) return;
 
     try {
-      await fetch("https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name }),
-      });
+      await fetch(
+        "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseOne",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name }),
+        },
+      );
       window.location.href = "/result";
     } catch (err) {
       console.error(err);
@@ -25,7 +28,7 @@ export default function Testing() {
 
   return (
     <div className="relative min-h-screen w-screen overflow-hidden bg-white text-[#1A1B1C] select-none font-sans">
-     <NavBar  />
+      <NavBar />
 
       {/* Subtitle Top-Left */}
       <div className="absolute top-20 left-6 md:left-12 z-20">
@@ -37,8 +40,24 @@ export default function Testing() {
       {/* Diagonal background lines connecting corners */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="0" x2="100%" y2="100%" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 4" />
-          <line x1="100%" y1="0" x2="0" y2="100%" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 4" />
+          <line
+            x1="0"
+            y1="0"
+            x2="100%"
+            y2="100%"
+            stroke="#E5E7EB"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+          />
+          <line
+            x1="100%"
+            y1="0"
+            x2="0"
+            y2="100%"
+            stroke="#E5E7EB"
+            strokeWidth="1"
+            strokeDasharray="4 4"
+          />
         </svg>
       </div>
 
@@ -74,14 +93,26 @@ export default function Testing() {
 
       {/* Bottom Left Back Button */}
       <div className="absolute bottom-8 left-6 md:left-12 z-20">
-        <a href="/" className="group flex items-center space-x-3 cursor-pointer">
+        <a
+          href="/"
+          className="group flex items-center space-x-3 cursor-pointer"
+        >
           <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
-            <span className="-rotate-45 text-black text-[10px]">◀</span>
+            <svg
+              className="-rotate-45"
+              width="8"
+              height="10"
+              viewBox="0 0 8 10"
+              aria-hidden="true"
+            >
+              <polygon points="8,0 0,5 8,10" fill="#1A1B1C" />
+            </svg>
           </div>
-          <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">BACK</span>
+          <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">
+            BACK
+          </span>
         </a>
       </div>
     </div>
   );
 }
-
