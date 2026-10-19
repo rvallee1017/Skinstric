@@ -1,4 +1,4 @@
-import Testing from "../Testing";
+import Testing from "../components/Testing";
 
 export default function TestingPage() {
     return (

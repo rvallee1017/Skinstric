@@ -1,4 +1,4 @@
-import Camera from "@/app/Camera"
+import Camera from "@/app/components/Camera"
 
 export default function CameraPage() {
     return (

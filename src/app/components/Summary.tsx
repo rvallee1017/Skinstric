@@ -1,47 +1,9 @@
+import NavBar from "./NavBar"
 
 export default function Summary() {
   return (
     <div className="antialiased text-[#1A1B1C]">
-      <div className="flex h-16 w-full flex-row justify-between relative z-1000 py-3 mb-3">
-        <div className="flex scale-75 flex-row items-center justify-center pt-1">
-          <a
-            className="mr-2 inline-flex h-9 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold leading-4 text-[#1A1B1C] transition-colors"
-            href="/"
-          >
-            SKINSTRIC
-          </a>
-          <img
-            alt="left-bracket"
-            loading="lazy"
-            width={5}
-            height={19}
-            decoding="async"
-            className="h-[17px] w-[4px]"
-            style={{ color: 'transparent' }}
-            srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202710.61a74ed4.png&amp;w=16&amp;q=75 1x"
-            src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202710.61a74ed4.png&amp;w=16&amp;q=75"
-          />
-          <p className="ml-1.5 mr-1.5 text-sm font-semibold text-[#1a1b1c83]">INTRO</p>
-          <img
-            alt="right-bracket"
-            loading="lazy"
-            width={5}
-            height={19}
-            decoding="async"
-            className="h-[17px] w-[4px]"
-            style={{ color: 'transparent' }}
-            srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202711.b2b3b291.png&amp;w=16&amp;q=75 1x"
-            src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRectangle%202711.b2b3b291.png&amp;w=16&amp;q=75"
-          />
-        </div>
-
-        <button
-          type="button"
-          className="mx-4 inline-flex h-9 scale-[0.8] items-center justify-center gap-2 bg-[#1A1B1C] px-4 py-2 text-[10px] font-semibold leading-4 text-[#FCFCFC] shadow transition-colors hover:bg-primary/90"
-        >
-          ENTER CODE
-        </button>
-      </div>
+      <NavBar />
 
       <div className="w-full flex-1 overflow-auto bg-white md:overflow-hidden">
         <div className="mx-5 flex max-w-full flex-col px-4 md:px-auto">

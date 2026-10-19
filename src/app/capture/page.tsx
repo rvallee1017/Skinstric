@@ -1,4 +1,4 @@
-import Capture from "@/app/Capture"
+import Capture from "@/app/components/Capture"
 
 export default function CapturePage() {
     return (
