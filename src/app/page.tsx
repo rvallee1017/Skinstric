@@ -1,6 +1,10 @@
+"use client"
+
 import NavBar from "./components/NavBar";
+import { useState } from "react";
 
 export default function Home() {
+  const [side, setSide] = useState(null);
   return (
     <div className="relative min-h-screen w-screen overflow-hidden bg-white text-[#1A1B1C] select-none font-sans">
       <NavBar />
@@ -10,51 +14,74 @@ export default function Home() {
         {/* Diagonal background lines connecting corners */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <line
-              x1="0"
-              y1="16%"
-              x2="23%"
-              y2="54%"
-              stroke="#E5E7EB"
-              strokeWidth="1"
-            />
-            <line
-              x1="23%"
-              y1="54%"
-              x2="0"
-              y2="93%"
-              stroke="#E5E7EB"
-              strokeWidth="1"
-            />
-            <line
-              x1="100%"
-              y1="16%"
-              x2="77%"
-              y2="54%"
-              stroke="#E5E7EB"
-              strokeWidth="1"
-            />
-            <line
-              x1="77%"
-              y1="54%"
-              x2="100%"
-              y2="93%"
-              stroke="#E5E7EB"
-              strokeWidth="1"
-            />
+            <g
+              style={{
+                opacity: side === "right" ? 0.35 : 1,
+                transition: "opacity 500ms",
+              }}
+            >
+              <line
+                x1="0"
+                y1="16%"
+                x2="23%"
+                y2="54%"
+                stroke="#E5E7EB"
+                strokeWidth="1"
+              />
+              <line
+                x1="23%"
+                y1="54%"
+                x2="0"
+                y2="93%"
+                stroke="#E5E7EB"
+                strokeWidth="1"
+              />
+            </g>
+            <g
+              style={{
+                opacity: side === "left" ? 0.35 : 1,
+                transition: "opacity 500ms",
+              }}
+            >
+              <line
+                x1="100%"
+                y1="16%"
+                x2="77%"
+                y2="54%"
+                stroke="#E5E7EB"
+                strokeWidth="1"
+              />
+              <line
+                x1="77%"
+                y1="54%"
+                x2="100%"
+                y2="93%"
+                stroke="#E5E7EB"
+                strokeWidth="1"
+              />
+            </g>
           </svg>
         </div>
 
         {/* Main Content Container */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        <div
+          className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4"
+          
+        >
           {/* Left Action: Discover A.I. with diamond icon */}
-          <div className="absolute left-16 md:left-28 top-1/2 -translate-y-1/2 flex items-center space-x-3">
+          <div
+            className={`absolute left-16 md:left-28 top-1/2 -translate-y-1/2 flex items-center space-x-3 transition-opacity duration-500 ${
+              side === "right" ? "opacity-0" : "opacity-100"
+            }`}
+          >
             <a
               href="/testing"
               className="group flex items-center space-x-3 cursor-pointer"
+              onMouseEnter={() => setSide("left")} onMouseLeave={() => setSide(null)}
             >
               <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
                 <svg
+                
                   className="-rotate-45"
                   width="8"
                   height="10"
@@ -69,23 +96,29 @@ export default function Home() {
               </span>
             </a>
           </div>
-
           {/* Center Heading */}
-          <div className="text-center">
-            <h1 className="text-[112px] font-normal tracking-[-0.04em] leading-[0.92] text-[#1A1B1C]">
+          <div
+            className="text-center transition-transform duration-500"
+            
+          >
+            <h1 className="text-[112px] font-normal tracking-[-0.04em] leading-[0.92] text-[#1A1B1C] transition-transform duration-700" style={{ transform: side === "left" ? "translateX(40%)" : side === "right" ? "translateX(-40%)" : "none" }} >
               Sophisticated
               <br />
               skincare
             </h1>
           </div>
-
           {/* Right Action: Take Test with diamond icon */}
-          <div className="absolute right-16 md:right-28 top-1/2 -translate-y-1/2 flex items-center space-x-3">
+          <div
+            className={`absolute right-16 md:right-28 top-1/2 -translate-y-1/2 flex items-center space-x-3 transition-opacity duration-500 ${
+              side === "left" ? "opacity-0" : "opacity-100"
+            }`}
+          >
             <a
               href="/testing"
               className="group flex items-center space-x-3 cursor-pointer"
+              onMouseEnter={() => setSide("right")} onMouseLeave={() => setSide(null)}
             >
-              <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]">
+              <span className="text-xs font-semibold tracking-wider text-[#1A1B1C]" >
                 TAKE TEST
               </span>
               <div className="w-10 h-10 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
@@ -101,7 +134,6 @@ export default function Home() {
               </div>
             </a>
           </div>
-
           {/* Bottom Left Description */}
           <div className="absolute bottom-12 left-16 max-w-[280px] text-[11px] font-normal leading-[1.6] text-[#1A1B1C] uppercase tracking-[0.02em]">
             <p>
@@ -116,8 +148,8 @@ export default function Home() {
       <div className="xl:hidden relative flex flex-col items-center justify-center min-h-[calc(100vh-64px)] mt-16 px-6 text-center">
         {/* Rotating square frames */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] border border-dotted border-[#A0A4AB] rotate-45"></div>
-          <div className="absolute w-[320px] h-[320px] sm:w-[430px] sm:h-[430px] border border-dotted border-[#A0A4AB] rotate-45"></div>
+          <div className="w-[360px] h-[360px] md:w-[420px] md:h-[420px] sm:w-[480px] sm:h-[480px] border border-dotted border-[#A0A4AB] rotate-45"></div>
+          <div className="absolute w-[320px] h-[320px] md:w-[350px] md:h-[350px] sm:w-[410px] sm:h-[410px] border border-dotted border-[#A0A4AB] rotate-45"></div>
         </div>
 
         <div className="relative z-10 flex flex-col items-center max-w-md mx-auto py-12">
