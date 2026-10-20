@@ -109,7 +109,9 @@ export default function Summary() {
 
   const currentList = demographics?.[selectedCategory] || [];
   const activeVal = selectedValues[selectedCategory] || currentList[0]?.name;
-  const activeItem = currentList.find((item: any) => item.name === activeVal) || currentList[0];
+  const activeItem = Array.isArray(currentList) 
+  ? (currentList.find((item: any) => item.name === activeVal) || currentList[0])
+  : undefined;
 
   return (
     <div className="antialiased text-[#1A1B1C]">
@@ -190,7 +192,7 @@ export default function Summary() {
                   </h4>
                 </div>
 
-                {currentList.map((item: any) => {
+                {Array.isArray(currentList) && currentList.map((item: any) => {
                   const isSelected = activeVal === item.name;
                   return (
                     <div
