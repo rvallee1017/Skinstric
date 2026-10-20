@@ -13,12 +13,12 @@ export default function Result() {
   const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    setIsAnalyzing(true);
 
     const reader = new FileReader();
     reader.onloadend = async () => {
       if (typeof reader.result !== "string") return;
       setPreviewImage(reader.result);
+      setIsAnalyzing(true);
 
       try {
         const response = await fetch(
@@ -31,7 +31,7 @@ export default function Result() {
         );
 
         if (!response.ok) {
-          throw new Error(`Upload failed: ${response.status}`);
+          throw new Error(`Analysis failed: ${response.status}`);
         }
 
         const result = await response.json();
@@ -42,11 +42,15 @@ export default function Result() {
 
         localStorage.setItem("demographics", JSON.stringify(result.data));
 
-        window.alert("Image analyzed successfully!");
+        setIsAnalyzing(false);
+
+        alert("Image analyzed successfully!");
+
         window.location.href = "/select";
       } catch (err) {
         console.error(err);
         setIsAnalyzing(false);
+        alert("Image analysis failed. Please try again.");
       }
     };
 
@@ -61,12 +65,9 @@ export default function Result() {
     fileInputRef.current?.click();
   };
 
-  {isAnalyzing && (
-  <AnalysisLoading previewImage={previewImage} />
-)}
-
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white text-[#1A1B1C] select-none font-sans">
+      {isAnalyzing && <AnalysisLoading previewImage={previewImage} />}
       {/* Top Header */}
       <NavBar />
 
