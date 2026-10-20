@@ -102,26 +102,30 @@ export default function Result() {
       />
 
       {/* Main Content: Two Options (Scan Face & Access Gallery) with Rotating Diamond Frames */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center justify-items-center min-h-screen w-full max-w-[1250px] mx-auto px-6 gap-y-40 pt-48 pb-32 md:py-20">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center justify-items-center min-h-screen w-full max-w-312.5 mx-auto px-6 gap-y-40 pt-48 pb-32 md:py-20">
         {" "}
         {/* Option 1: Allow A.I. to Scan Your Face (Camera) */}
         <div
           className="relative flex flex-col items-center justify-center cursor-pointer group"
           onClick={handleCameraClick}
         >
-          <div className="absolute w-[160px] h-[160px] md:w-[260px] md:h-[260px] border border-dotted border-[#A0A4AB] rotate-205 animate-spin-slow pointer-events-none"></div>
-          <div className="absolute w-[140px] h-[140px] md:w-[240px] md:h-[240px] border border-dotted border-[#A0A4AB] rotate-19 animate-spin-slower pointer-events-none"></div>
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] animate-spin-slowest pointer-events-none"></div>
+          <div className="absolute w-40 h-40 md:w-65 md:h-65 border border-dotted border-[#A0A4AB] rotate-205 animate-spin-slow pointer-events-none"></div>
+          <div className="absolute w-35 h-35 md:w-60 md:h-60 border border-dotted border-[#A0A4AB] rotate-19 animate-spin-slower pointer-events-none"></div>
+          <div className="absolute w-45 h-45 md:w-70 md:h-70 border border-dotted border-[#A0A4AB] animate-spin-slowest pointer-events-none"></div>
 
-          <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
-            <img src="./camera-icon.webp"></img>
-          </div>
-          <div className="mt-6 text-center z-10">
-            <p className="text-xs font-semibold tracking-wider leading-relaxed">
-              ALLOW A.I.
-              <br />
-              TO SCAN YOUR FACE
-            </p>
+          <div className="relative z-10 w-30 h-30 rounded-full  flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
+            <img src="./camera-icon.webp" alt="" />
+            <div className="absolute bottom-[75%] left-[85%] flex items-start">
+              <svg width="80" height="80" className="shrink-0">
+                <line x1="0" y1="80" x2="74" y2="6" stroke="#1A1B1C" />
+                <circle cx="76" cy="4" r="3" fill="white" stroke="#1A1B1C" />
+              </svg>
+              <p className="ml-2 text-xs font-semibold tracking-wider leading-relaxed whitespace-nowrap">
+                ALLOW A.I.
+                <br />
+                TO SCAN YOUR FACE
+              </p>
+            </div>
           </div>
         </div>
         {/* Option 2: Allow A.I. Access Gallery */}
@@ -129,19 +133,23 @@ export default function Result() {
           className="relative flex flex-col items-center justify-center cursor-pointer group"
           onClick={handleGalleryClick}
         >
-          <div className="absolute w-[160px] h-[160px] md:w-[260px] md:h-[260px] border border-dotted border-[#A0A4AB] rotate-205 animate-spin-slow pointer-events-none"></div>
-          <div className="absolute w-[140px] h-[140px] md:w-[240px] md:h-[240px] border border-dotted border-[#A0A4AB] rotate-19 animate-spin-slower pointer-events-none"></div>
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] animate-spin-slowest pointer-events-none"></div>
+          <div className="absolute w-40 h-40 md:w-65 md:h-65 border border-dotted border-[#A0A4AB] rotate-205 animate-spin-slow pointer-events-none"></div>
+          <div className="absolute w-35 h-35 md:w-60 md:h-60 border border-dotted border-[#A0A4AB] rotate-19 animate-spin-slower pointer-events-none"></div>
+          <div className="absolute w-45 h-45 md:w-70 md:h-70 border border-dotted border-[#A0A4AB] animate-spin-slowest pointer-events-none"></div>
 
-          <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
-            <img src="./gallery-icon.webp"></img>
-          </div>
-          <div className="mt-6 text-center z-10">
-            <p className="text-xs font-semibold tracking-wider leading-relaxed">
-              ALLOW A.I.
-              <br />
-              ACCESS GALLERY
-            </p>
+          <div className="relative z-10 w-28 h-28 rounded-full flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
+            <img src="./gallery-icon.webp" alt="" className="w-full h-full" />
+            <div className="absolute top-[75%] right-[85%] flex flex-row-reverse items-end">
+              <svg width="80" height="80" className="shrink-0">
+                <line x1="80" y1="0" x2="6" y2="74" stroke="#1A1B1C" />
+                <circle cx="4" cy="76" r="3" fill="white" stroke="#1A1B1C" />
+              </svg>
+              <p className="mr-2 text-xs font-semibold tracking-wider leading-relaxed text-right whitespace-nowrap">
+                ALLOW A.I.
+                <br />
+                ACCESS GALLERY
+              </p>
+            </div>
           </div>
         </div>
       </div>
