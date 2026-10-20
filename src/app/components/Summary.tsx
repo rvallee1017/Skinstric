@@ -130,7 +130,7 @@ export default function Summary() {
 
       <div className="w-full flex-1 overflow-auto bg-white md:overflow-hidden">
         <div className="mx-5 flex max-w-full flex-col px-4 md:px-auto">
-          <div className="mb-4 ml-4 text-start md:mb-10 md:ml-0">
+          <div className="mb-4 ml-4 mt-15 text-start md:mb-10 md:ml-0">
             <h2 className="mb-1 text-base font-semibold leading-6 md:text-base">
               A.I. ANALYSIS
             </h2>
@@ -269,10 +269,10 @@ export default function Summary() {
                     </span>
                   </div>
                   <div className="group hidden flex-row items-center justify-center sm:flex">
-                    <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center border border-[#1A1B1C] group-hover:scale-[0.92] sm:flex"></div>
-                    <svg
+                    <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center items-center border border-[#1A1B1C] group-hover:scale-[0.92] sm:flex">
+                      <svg
                 
-                  className="-rotate-0"
+                  className="-rotate-45"
                   width="8"
                   height="10"
                   viewBox="0 0 8 10"
@@ -280,6 +280,7 @@ export default function Summary() {
                 >
                   <polygon points="8,0 0,5 8,10" fill="#1A1B1C" />
                 </svg>
+                    </div>
                     <span className="ml-6 hidden text-sm font-semibold sm:block">
                       BACK
                     </span>
@@ -298,9 +299,9 @@ export default function Summary() {
                     <span className="mr-5 hidden text-sm font-semibold sm:block">
                       HOME
                     </span>
-                    <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center border border-[#1A1B1C] sm:flex"></div>
-                    <svg
-                  className="-rotate-0"
+                    <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center items-center border border-[#1A1B1C] sm:flex">
+                      <svg
+                  className="-rotate-45"
                   width="8"
                   height="10"
                   viewBox="0 0 8 10"
@@ -308,6 +309,7 @@ export default function Summary() {
                 >
                   <polygon points="0,0 8,5 0,10" fill="#1A1B1C" />
                 </svg>
+                    </div>
                   </div>
                 </div>
               </a>
