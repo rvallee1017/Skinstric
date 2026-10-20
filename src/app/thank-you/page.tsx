@@ -19,8 +19,7 @@ export default function ThankYouPage() {
         <p className="text-xl text-gray-500">Proceed for the next step</p>
         <button
           onClick={() => router.push("/result")}
-          className="fixed bottom-12 right-12 flex items-center gap-6
-  animate-[slideIn_0.8s_ease-out_forwards]"
+          className="fixed bottom-12 right-12 z-20 flex items-center gap-6 proceed-slide"
         >
           <span className="text-sm font-semibold">PROCEED</span>
 

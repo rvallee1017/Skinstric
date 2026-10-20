@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
+
+
+.proceed-slide {
+  animation: slideIn 1s ease-out both;
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(-600px);
+    ease: ease-in;
   }
   to {
     opacity: 1;
