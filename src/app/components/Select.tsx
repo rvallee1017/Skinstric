@@ -31,42 +31,25 @@ export default function Select() {
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-16 px-6 py-32 lg:flex-row lg:gap-32">
         {/* Diamond Buttons Grid */}
 
-        <div className="relative">
-          <div className={`absolute ${hovered ? sizes[hovered] : "-inset-12"} rotate-45 border-2 border-dotted border-gray-400 transition-all duration-500 pointer-events-none ${hovered ? "opacity-100" : "opacity-0"}`}>
-          <div className="grid grid-cols-2 gap-2 rotate-45">
-            {[
-              "Demographics",
-              "Skin Type Details",
-              "Cosmetic Concerns",
-              "Weather",
-            ].map((label) => {
-              const active = label === "Demographics";
-              const className = `w-40 h-40 bg-gray-100 flex items-center justify-center transition-colors ${active ? "cursor-pointer hover:bg-gray-300" : "cursor-not-allowed"}`;
-
-              return active ? (
-                <a key={label} href="/demographics" className={className}>
-                  <span className="-rotate-45 text-sm font-semibold uppercase text-center">
-                    {label}
-                  </span>
-                </a>
-              ) : (
-                <button
-                  key={label}
-                  type="button"
-                  disabled
-                  className={className}
-                  onMouseEnter={() => setHovered(label)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  <span className="-rotate-45 text-sm font-semibold uppercase text-center">
-                    {label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+       <div className="relative">
+  <div className={`absolute ${hovered ? sizes[hovered] : "-inset-12"} rotate-45 border-2 border-dotted border-gray-400 transition-all duration-500 pointer-events-none ${hovered ? "opacity-100" : "opacity-0"}`} />
+  <div className="grid grid-cols-2 gap-2 rotate-45">
+    {["Demographics", "Skin Type Details", "Cosmetic Concerns", "Weather"].map((label) => {
+      const active = label === "Demographics";
+      const className = `w-40 h-40 bg-gray-100 flex items-center justify-center transition-colors ${active ? "cursor-pointer hover:bg-gray-300" : "cursor-not-allowed"}`;
+      const hoverProps = {
+        onMouseEnter: () => setHovered(label),
+        onMouseLeave: () => setHovered(null),
+      };
+      const text = <span className="-rotate-45 text-sm font-semibold uppercase text-center">{label}</span>;
+      return active ? (
+        <a key={label} href="/summary" className={className} {...hoverProps}>{text}</a>
+      ) : (
+        <div key={label} aria-disabled="true" className={className} {...hoverProps}>{text}</div>
+      );
+    })}
+  </div>
+</div>
       </div>
 
       {/* Bottom Navigation: Back & Get Summary */}
