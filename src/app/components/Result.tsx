@@ -109,9 +109,9 @@ export default function Result() {
           className="relative flex flex-col items-center justify-center cursor-pointer group"
           onClick={handleCameraClick}
         >
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
+          <div className="absolute w-[160px] h-[160px] md:w-[260px] md:h-[260px] border border-dotted border-[#A0A4AB] rotate-205 animate-spin-slow pointer-events-none"></div>
+          <div className="absolute w-[140px] h-[140px] md:w-[240px] md:h-[240px] border border-dotted border-[#A0A4AB] rotate-19 animate-spin-slower pointer-events-none"></div>
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] animate-spin-slowest pointer-events-none"></div>
 
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
             <img src="./camera-icon.webp"></img>
@@ -129,9 +129,9 @@ export default function Result() {
           className="relative flex flex-col items-center justify-center cursor-pointer group"
           onClick={handleGalleryClick}
         >
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-0 animate-spin-slow pointer-events-none"></div>
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] rotate-12 pointer-events-none"></div>
-          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] -rotate-6 pointer-events-none"></div>
+          <div className="absolute w-[160px] h-[160px] md:w-[260px] md:h-[260px] border border-dotted border-[#A0A4AB] rotate-205 animate-spin-slow pointer-events-none"></div>
+          <div className="absolute w-[140px] h-[140px] md:w-[240px] md:h-[240px] border border-dotted border-[#A0A4AB] rotate-19 animate-spin-slower pointer-events-none"></div>
+          <div className="absolute w-[180px] h-[180px] md:w-[280px] md:h-[280px] border border-dotted border-[#A0A4AB] animate-spin-slowest pointer-events-none"></div>
 
           <div className="relative z-10 w-28 h-28 rounded-full border border-black flex items-center justify-center bg-white group-hover:scale-105 transition-transform">
             <img src="./gallery-icon.webp"></img>
