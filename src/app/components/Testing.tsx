@@ -7,6 +7,7 @@ export default function Testing() {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [step, setStep] = useState<"name" | "city">("name");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
@@ -18,6 +19,7 @@ export default function Testing() {
   }
 
   if (!city.trim()) return;
+  setLoading(true);
 
   try {
     const response = await fetch(
@@ -39,6 +41,7 @@ export default function Testing() {
     window.location.href = "/thank-you";
   } catch (error) {
     console.error("Submission failed:", error);
+    setLoading(false);
   }
 };
 
@@ -86,6 +89,28 @@ export default function Testing() {
           <div className="absolute w-[420px] h-[420px] sm:w-[520px] sm:h-[520px] border border-dotted border-[#A0A4AB] -rotate-6"></div>
         </div>
 
+        {loading ? (
+  <div className="text-center">
+    <p className="text-2xl text-gray-500 mb-6">
+      Processing submission
+    </p>
+
+    <div className="flex justify-center gap-4">
+      {[0, 1, 2].map((i) => (
+        <div
+          key={i}
+          className="w-3 h-3 bg-gray-400 rounded-full animate-bounce"
+          style={{
+            animationDelay: `${i * 0.15}s`,
+            animationDuration: "1s",
+          }}
+        />
+      ))}
+    </div>
+  </div>
+) : (
+  <>
+
        <div className="relative z-20 flex flex-col items-center justify-center text-center">
   <p className="text-xs font-medium text-gray-400 tracking-wider uppercase mb-3">
     CLICK TO TYPE
@@ -116,8 +141,10 @@ export default function Testing() {
     </button>
   </form>
   </div>
-  </div>
+  </>
+)}
 
+    </div>
 
       {/* Bottom Left Back Button */}
       <div className="absolute bottom-8 left-6 md:left-12 z-20">
