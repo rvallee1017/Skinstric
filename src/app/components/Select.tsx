@@ -1,6 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import NavBar from "./NavBar";
 
 export default function Select() {
+  const [hovered, setHovered] = useState<string | null>(null);
+  const sizes: Record<string, string> = {
+    Demographics: "-inset-12",
+    "Skin Type Details": "-inset-20",
+    Weather: "-inset-28",
+    "Cosmetic Concerns": "-inset-36",
+  };
   return (
     <div className="relative min-h-screen w-screen overflow-hidden bg-white text-[#1A1B1C] select-none font-sans">
       <NavBar />
@@ -19,31 +29,45 @@ export default function Select() {
 
       {/* Main Center Diamond Grid & Dotted Outline Frame */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center gap-16 px-6 py-32 lg:flex-row lg:gap-32">
-      
-
         {/* Diamond Buttons Grid */}
-       
-        <div className="relative group">
-          <div className="absolute -inset-16 rotate-45 border-2 border-dotted border-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+        <div className="relative">
+          <div className={`absolute ${hovered ? sizes[hovered] : "-inset-12"} rotate-45 border-2 border-dotted border-gray-400 transition-all duration-500 pointer-events-none ${hovered ? "opacity-100" : "opacity-0"}`}>
           <div className="grid grid-cols-2 gap-2 rotate-45">
-            {["Demographics", "Skin Type Details", "Cosmetic Concerns", "Weather"].map((label) => {
+            {[
+              "Demographics",
+              "Skin Type Details",
+              "Cosmetic Concerns",
+              "Weather",
+            ].map((label) => {
               const active = label === "Demographics";
               const className = `w-40 h-40 bg-gray-100 flex items-center justify-center transition-colors ${active ? "cursor-pointer hover:bg-gray-300" : "cursor-not-allowed"}`;
 
               return active ? (
                 <a key={label} href="/demographics" className={className}>
-                  <span className="-rotate-45 text-sm font-semibold uppercase text-center">{label}</span>
+                  <span className="-rotate-45 text-sm font-semibold uppercase text-center">
+                    {label}
+                  </span>
                 </a>
               ) : (
-                <button key={label} type="button" disabled className={className}>
-                  <span className="-rotate-45 text-sm font-semibold uppercase text-center">{label}</span>
+                <button
+                  key={label}
+                  type="button"
+                  disabled
+                  className={className}
+                  onMouseEnter={() => setHovered(label)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  <span className="-rotate-45 text-sm font-semibold uppercase text-center">
+                    {label}
+                  </span>
                 </button>
               );
             })}
           </div>
         </div>
-</div>
-
+      </div>
+      </div>
 
       {/* Bottom Navigation: Back & Get Summary */}
       <div className="absolute bottom-8 left-6 md:left-12 z-20">
