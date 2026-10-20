@@ -283,9 +283,15 @@ export default function Summary() {
                   </div>
                   <div className="group hidden flex-row items-center justify-center sm:flex">
                     <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center items-center border border-[#1A1B1C] group-hover:scale-[0.92] sm:flex">
-                      <span className="-rotate-45 text-black text-[10px]">
-                        ◄
-                      </span>
+                      <svg
+                        className="-rotate-45"
+                        width="8"
+                        height="10"
+                        viewBox="0 0 8 10"
+                        aria-hidden="true"
+                      >
+                        <polygon points="8,0 0,5 8,10" fill="#1A1B1C" />
+                      </svg>
                     </div>
                     <span className="ml-6 hidden text-sm font-semibold sm:block">
                       BACK
@@ -306,9 +312,15 @@ export default function Summary() {
                       HOME
                     </span>
                     <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center items-center border border-[#1A1B1C] sm:flex">
-                      <span className="-rotate-45 text-black text-[10px]">
-                        ►
-                      </span>
+                      <svg
+                        className="-rotate-45"
+                        width="8"
+                        height="10"
+                        viewBox="0 0 8 10"
+                        aria-hidden="true"
+                      >
+                        <polygon points="0,0 8,5 0,10" fill="#1A1B1C" />
+                      </svg>
                     </div>
                   </div>
                 </div>
