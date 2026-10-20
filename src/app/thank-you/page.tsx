@@ -1,22 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function ThankYouPage() {
   const router = useRouter();
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      router.push("/result");
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [router]);
-
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white text-[#1A1B1C]">
-
       {/* Dotted background squares */}
       <div className="absolute w-[72vmin] h-[72vmin] rotate-[35deg] border-2 border-dotted border-gray-300" />
 
@@ -24,13 +14,28 @@ export default function ThankYouPage() {
 
       {/* Thank You message */}
       <div className="relative z-10 text-center px-4">
-        <h1 className="text-4xl mb-8">
-          Thank you!
-        </h1>
+        <h1 className="text-4xl mb-8">Thank you!</h1>
 
-        <p className="text-xl text-gray-500">
-          Proceed for the next step
-        </p>
+        <p className="text-xl text-gray-500">Proceed for the next step</p>
+        <button
+          onClick={() => router.push("/result")}
+          className="fixed bottom-12 right-12 flex items-center gap-6
+  animate-[slideIn_0.8s_ease-out_forwards]"
+        >
+          <span className="text-sm font-semibold">PROCEED</span>
+
+           <div className="w-9 h-9 border border-black rotate-45 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <svg
+                className="-rotate-45"
+                width="8"
+                height="10"
+                viewBox="0 0 8 10"
+                aria-hidden="true"
+              >
+                <polygon points="0,0 8,5 0,10" fill="#1A1B1C" />
+              </svg>
+            </div>
+        </button>
       </div>
     </main>
   );
