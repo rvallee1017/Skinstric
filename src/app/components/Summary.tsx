@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
+import CircularProgress from "./CircularProgress";
 
 export default function Summary() {
   const [demographics, setDemographics] = useState<any>(null);
@@ -121,8 +122,8 @@ export default function Summary() {
 
   console.log("Current List:", currentList);
   const activeItem =
-  Object.entries(currentList).find(([name]) => name === activeVal) ||
-  Object.entries(currentList)[0];
+    Object.entries(currentList).find(([name]) => name === activeVal) ||
+    Object.entries(currentList)[0];
 
   return (
     <div className="antialiased text-[#1A1B1C]">
@@ -195,17 +196,29 @@ export default function Summary() {
             </div>
 
             {/* Center display */}
+            {/* {(activeItem?.[1] * 100).toFixed(0) ?? 90} */}
             <div className="relative flex flex-col items-center justify-center bg-gray-100 p-4 md:h-[57vh] md:border-t">
               <p className="left-5 top-2 hidden text-[40px] md:absolute md:block uppercase">
                 {activeVal}
               </p>
-              <div className="relative mb-4 aspect-square w-full max-w-[384px] md:absolute md:bottom-2 md:right-5 flex items-center justify-center">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-6xl font-normal md:text-[120px] tracking-tighter">
-                    {(activeItem?.[1] * 100).toFixed(0) ?? 90}
-                    <span className="absolute text-2xl md:text-4xl">%</span>
-                  </p>
-                </div>
+              <div className="relative w-full max-w-[25vw] h-full max-h-[25vw] self-end">
+                <CircularProgress
+                  percentage={
+                    activeItem?.[1] != null
+                      ? (activeItem[1] * 100).toFixed(0)
+                      : 90
+                  }
+                  color="black"
+                />
+                <h1 className="top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] absolute text-4xl flex font-light max-sm:text-2xl">
+                  {activeItem?.[1] != null
+                    ? (activeItem[1] * 100).toFixed(0)
+                    : "0"}
+                  &nbsp;
+                  <span className="text-2xl -translate-y-[25%] max-sm:text-sm max-sm:absolute max-sm:top-0 max-sm:right-0 max-sm:translate-x-[75%]">
+                    %
+                  </span>
+                </h1>
               </div>
               <p className="mb-1 text-xs font-normal leading-6 text-[#A0A4AB] md:absolute md:bottom-[-15%] md:left-[22%] md:text-sm lg:left-[30%] lg:text-base xl:left-[40%] 2xl:left-[45%] uppercase">
                 If A.I. estimate is wrong, select the correct one.
@@ -270,16 +283,9 @@ export default function Summary() {
                   </div>
                   <div className="group hidden flex-row items-center justify-center sm:flex">
                     <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center items-center border border-[#1A1B1C] group-hover:scale-[0.92] sm:flex">
-                      <svg
-                
-                  className="-rotate-45"
-                  width="8"
-                  height="10"
-                  viewBox="0 0 8 10"
-                  aria-hidden="true"
-                >
-                  <polygon points="8,0 0,5 8,10" fill="#1A1B1C" />
-                </svg>
+                      <span className="-rotate-45 text-black text-[10px]">
+                        ◄
+                      </span>
                     </div>
                     <span className="ml-6 hidden text-sm font-semibold sm:block">
                       BACK
@@ -300,15 +306,9 @@ export default function Summary() {
                       HOME
                     </span>
                     <div className="hidden h-12 w-12 rotate-45 scale-[0.85] justify-center items-center border border-[#1A1B1C] sm:flex">
-                      <svg
-                  className="-rotate-45"
-                  width="8"
-                  height="10"
-                  viewBox="0 0 8 10"
-                  aria-hidden="true"
-                >
-                  <polygon points="0,0 8,5 0,10" fill="#1A1B1C" />
-                </svg>
+                      <span className="-rotate-45 text-black text-[10px]">
+                        ►
+                      </span>
                     </div>
                   </div>
                 </div>
